@@ -1,3 +1,5 @@
 docker-compose run web django-admin starproject backend .
 docker-compose run web python manage.py startapp users
 docker-compose up --build
+
+docker-compose run web python manage.py migrate
