@@ -1,1 +1,2 @@
-docker-compose run web django-admin starproyect backend .
+docker-compose run web django-admin starproject backend .
+docker-compose run web python manage.py startapp users
