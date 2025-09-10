@@ -2,4 +2,19 @@ docker-compose run web django-admin starproject backend .
 docker-compose run web python manage.py startapp users
 docker-compose up --build
 
+
+docker-compose run web python manage.py makemigrations
+docker-compose run web python manage.py migrate
+
+docker-compose run web python manage.py createsuperuser
+
+# Elimina la base de datos (ajusta el nombre si es diferente)
+rm db.sqlite3
+
+# Elimina todas las migraciones
+find . -path "/migrations/.py" -not -name "_init_.py" -delete
+find . -path "/migrations/.pyc"  -delete
+
+# Crea la base de datos y las migraciones desde cero
+docker-compose run web python manage.py makemigrations
 docker-compose run web python manage.py migrate
